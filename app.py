@@ -6,14 +6,15 @@ import os
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins
 
-UPLOAD_FOLDER = "./uploads"
-OUTPUT_FOLDER = "./outputs"
+UPLOAD_FOLDER = "/tmp/uploads"  # Use /tmp for Render deployments
+OUTPUT_FOLDER = "/tmp/outputs"  # Use /tmp for Render deployments
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 @app.route("/")
 def home():
     return "Flask backend is running!"
+
 @app.route("/upload", methods=["POST"])
 def upload_video():
     if "file" not in request.files:
