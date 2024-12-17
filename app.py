@@ -48,7 +48,7 @@ def upload_video():
     cap.release()
     out.release()
 
-    return send_file(output_path, as_attachment=True)
+    return send_file(output_path, as_attachment=True,mimetype="video/mp4")
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=port)
